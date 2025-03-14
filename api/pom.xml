@@ -33,6 +33,7 @@
 	</properties>
 	<modules>
 		<module>dominio</module>
+		<module>infraestructura</module>
 	</modules>
 
 	<dependencies>
