@@ -2,26 +2,32 @@ package campeonatosfifa.api.dominio.entidades;
 
 import org.hibernate.annotations.GenericGenerator;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "fase")
 public class Fase {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "secuencia_fase")
     @GenericGenerator(name = "secuencia_fase", strategy = "increment")
     @Column(name = "id")
     private int id;
 
-    @Column(name = "fase", length = 50, unique = true)
-    private String nombre;
+    @Column(name = "fase", unique = true, nullable = false)
+    private String fase;
 
     public Fase() {
     }
 
-    public Fase(int id, String nombre) {
+    public Fase(int id, String fase) {
         this.id = id;
-        this.nombre = nombre;
+        this.fase = fase;
     }
 
     public int getId() {
@@ -32,11 +38,12 @@ public class Fase {
         this.id = id;
     }
 
-    public String getNombre() {
-        return nombre;
+    public String getFase() {
+        return fase;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setFase(String fase) {
+        this.fase = fase;
     }
 }
+

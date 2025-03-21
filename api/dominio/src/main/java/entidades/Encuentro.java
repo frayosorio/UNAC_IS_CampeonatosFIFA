@@ -1,12 +1,15 @@
 package campeonatosfifa.api.dominio.entidades;
 
-import org.hibernate.annotations.GenericGenerator;
-
 import jakarta.persistence.*;
+
+import java.util.Date;
+
+import org.hibernate.annotations.GenericGenerator;
 
 @Entity
 @Table(name = "encuentro")
 public class Encuentro {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "secuencia_encuentro")
     @GenericGenerator(name = "secuencia_encuentro", strategy = "increment")
@@ -14,27 +17,28 @@ public class Encuentro {
     private int id;
 
     @ManyToOne
-    @JoinColumn(name = "idpais1", referencedColumnName = "id")
+    @JoinColumn(name = "idpais1", referencedColumnName = "id", nullable = false)
     private Seleccion pais1;
 
     @ManyToOne
-    @JoinColumn(name = "idpais2", referencedColumnName = "id")
+    @JoinColumn(name = "idpais2", referencedColumnName = "id", nullable = false)
     private Seleccion pais2;
 
     @ManyToOne
-    @JoinColumn(name = "idfase", referencedColumnName = "id")
+    @JoinColumn(name = "idfase", referencedColumnName = "id", nullable = false)
     private Fase fase;
 
     @ManyToOne
-    @JoinColumn(name = "idcampeonato", referencedColumnName = "id")
+    @JoinColumn(name = "idcampeonato", referencedColumnName = "id", nullable = false)
     private Campeonato campeonato;
 
     @ManyToOne
-    @JoinColumn(name = "idestadio", referencedColumnName = "id")
+    @JoinColumn(name = "idestadio", referencedColumnName = "id", nullable = false)
     private Estadio estadio;
 
     @Column(name = "fecha")
-    private java.sql.Date fecha;
+    @Temporal(TemporalType.DATE)
+    private Date fecha;
 
     @Column(name = "goles1")
     private Integer goles1;
@@ -42,11 +46,16 @@ public class Encuentro {
     @Column(name = "goles2")
     private Integer goles2;
 
+    @Column(name = "penales1")
+    private Integer penales1;
+
+    @Column(name = "penales2")
+    private Integer penales2;
+
     public Encuentro() {
     }
 
-    public Encuentro(int id, Seleccion pais1, Seleccion pais2, Fase fase, Campeonato campeonato, Estadio estadio,
-            java.sql.Date fecha, Integer goles1, Integer goles2) {
+    public Encuentro(int id, Seleccion pais1, Seleccion pais2, Fase fase, Campeonato campeonato, Estadio estadio, Date fecha, Integer goles1, Integer goles2, Integer penales1, Integer penales2) {
         this.id = id;
         this.pais1 = pais1;
         this.pais2 = pais2;
@@ -56,6 +65,8 @@ public class Encuentro {
         this.fecha = fecha;
         this.goles1 = goles1;
         this.goles2 = goles2;
+        this.penales1 = penales1;
+        this.penales2 = penales2;
     }
 
     public int getId() {
@@ -106,11 +117,11 @@ public class Encuentro {
         this.estadio = estadio;
     }
 
-    public java.sql.Date getFecha() {
+    public Date getFecha() {
         return fecha;
     }
 
-    public void setFecha(java.sql.Date fecha) {
+    public void setFecha(Date fecha) {
         this.fecha = fecha;
     }
 
@@ -129,5 +140,21 @@ public class Encuentro {
     public void setGoles2(Integer goles2) {
         this.goles2 = goles2;
     }
-    
+
+    public Integer getPenales1() {
+        return penales1;
+    }
+
+    public void setPenales1(Integer penales1) {
+        this.penales1 = penales1;
+    }
+
+    public Integer getPenales2() {
+        return penales2;
+    }
+
+    public void setPenales2(Integer penales2) {
+        this.penales2 = penales2;
+    }
+
 }

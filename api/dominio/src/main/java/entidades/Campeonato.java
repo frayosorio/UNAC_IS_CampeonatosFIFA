@@ -12,32 +12,31 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name="campeonato")
+@Table(name = "campeonato")
 public class Campeonato {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "secuencia_campeonato")
-    @GenericGenerator(name="secuencia_campeonato", strategy = "increment")
-    @Column(name="id")
+    @GenericGenerator(name = "secuencia_campeonato", strategy = "increment")
+    @Column(name = "id")
     private int id;
-
-    @Column(name="campeonato", length = 100, unique=true)
+    @Column(name = "campeonato", length = 100, unique = true)
     private String nombre;
-
-    @Column(name="año")
+    @Column(name = "año")
     private int año;
-
+    
     @ManyToOne
-    @JoinColumn(name="idpais", referencedColumnName = "id")
-    private Seleccion paisOrganizador;
+    @JoinColumn(name = "idpais", referencedColumnName = "id")
+    private Seleccion pais;
 
     public Campeonato() {
     }
 
-    public Campeonato(int id, String nombre, int año, entidades.Seleccion paisOrganizador) {
+    public Campeonato(int id, String nombre, int año, Seleccion pais) {
         this.id = id;
         this.nombre = nombre;
         this.año = año;
-        this.paisOrganizador = paisOrganizador;
+        this.pais = pais;
     }
 
     public int getId() {
@@ -64,12 +63,12 @@ public class Campeonato {
         this.año = año;
     }
 
-    public Seleccion getPaisOrganizador() {
-        return paisOrganizador;
+    public Seleccion getPais() {
+        return pais;
     }
 
-    public void setPaisOrganizador(Seleccion paisOrganizador) {
-        this.paisOrganizador = paisOrganizador;
+    public void setPais(Seleccion pais) {
+        this.pais = pais;
     }
 
 }

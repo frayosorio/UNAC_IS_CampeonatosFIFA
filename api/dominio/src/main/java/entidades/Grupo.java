@@ -7,17 +7,18 @@ import jakarta.persistence.*;
 @Entity
 @Table(name = "grupo")
 public class Grupo {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "secuencia_grupo")
     @GenericGenerator(name = "secuencia_grupo", strategy = "increment")
     @Column(name = "id")
     private int id;
 
-    @Column(name = "grupo", length = 5)
+    @Column(name = "grupo", nullable = false)
     private String nombre;
 
     @ManyToOne
-    @JoinColumn(name = "idcampeonato", referencedColumnName = "id")
+    @JoinColumn(name = "idcampeonato", referencedColumnName = "id", nullable = false)
     private Campeonato campeonato;
 
     public Grupo() {

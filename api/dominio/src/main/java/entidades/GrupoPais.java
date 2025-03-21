@@ -1,42 +1,29 @@
 package campeonatosfifa.api.dominio.entidades;
 
-import java.io.Serializable;
-
-import org.hibernate.annotations.GenericGenerator;
 
 import jakarta.persistence.*;
 
 @Entity
-@Table(name="grupopais")
+@IdClass(GrupoPaisId.class)
+@Table(name = "grupopais")
 public class GrupoPais {
 
-    @EmbeddedId
-    private GrupoPaisId id;
-
+    @Id
     @ManyToOne
-    @MapsId("idGrupo")
-    @JoinColumn(name = "idgrupo", referencedColumnName = "id")
+    @JoinColumn(name = "idgrupo", referencedColumnName = "id", nullable = false)
     private Grupo grupo;
 
+    @Id
     @ManyToOne
-    @MapsId("idPais")
-    @JoinColumn(name = "idpais", referencedColumnName = "id")
+    @JoinColumn(name = "idpais", referencedColumnName = "id", nullable = false)
     private Seleccion pais;
 
-    public GrupoPais() {}
+    public GrupoPais() {
+    }
 
     public GrupoPais(Grupo grupo, Seleccion pais) {
-        this.id = new GrupoPaisId(grupo.getId(), pais.getId());
         this.grupo = grupo;
         this.pais = pais;
-    }
-
-    public GrupoPaisId getId() {
-        return id;
-    }
-
-    public void setId(GrupoPaisId id) {
-        this.id = id;
     }
 
     public Grupo getGrupo() {
@@ -55,33 +42,3 @@ public class GrupoPais {
         this.pais = pais;
     }
 }
-
-@Embeddable
-class GrupoPaisId implements Serializable {
-    private int idGrupo;
-    private int idPais;
-
-    public GrupoPaisId() {}
-
-    public GrupoPaisId(int idGrupo, int idPais) {
-        this.idGrupo = idGrupo;
-        this.idPais = idPais;
-    }
-
-    public int getIdGrupo() {
-        return idGrupo;
-    }
-
-    public void setIdGrupo(int idGrupo) {
-        this.idGrupo = idGrupo;
-    }
-
-    public int getIdPais() {
-        return idPais;
-    }
-
-    public void setIdPais(int idPais) {
-        this.idPais = idPais;
-    }
-}
-

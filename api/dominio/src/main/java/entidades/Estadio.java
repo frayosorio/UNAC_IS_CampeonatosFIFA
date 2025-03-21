@@ -7,20 +7,21 @@ import jakarta.persistence.*;
 @Entity
 @Table(name = "estadio")
 public class Estadio {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "secuencia_estadio")
     @GenericGenerator(name = "secuencia_estadio", strategy = "increment")
     @Column(name = "id")
     private int id;
 
-    @Column(name = "estadio", length = 50)
+    @Column(name = "estadio", nullable = false)
     private String nombre;
 
     @ManyToOne
-    @JoinColumn(name = "idciudad", referencedColumnName = "id")
+    @JoinColumn(name = "idciudad", referencedColumnName = "id", nullable = false)
     private Ciudad ciudad;
 
-    @Column(name = "capacidad")
+    @Column(name = "capacidad", nullable = false)
     private int capacidad;
 
     public Estadio() {
@@ -64,4 +65,5 @@ public class Estadio {
     public void setCapacidad(int capacidad) {
         this.capacidad = capacidad;
     }
+
 }
