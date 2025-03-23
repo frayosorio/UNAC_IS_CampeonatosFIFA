@@ -20,14 +20,14 @@ public class Fase {
     private int id;
 
     @Column(name = "fase", unique = true, nullable = false)
-    private String fase;
+    private String nombre;
 
     public Fase() {
     }
 
-    public Fase(int id, String fase) {
+    public Fase(int id, String nombre) {
         this.id = id;
-        this.fase = fase;
+        this.nombre = nombre;
     }
 
     public int getId() {
@@ -38,12 +38,12 @@ public class Fase {
         this.id = id;
     }
 
-    public String getFase() {
-        return fase;
+    public String getNombre() {
+        return nombre;
     }
 
-    public void setFase(String fase) {
-        this.fase = fase;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 }
 

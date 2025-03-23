@@ -4,6 +4,9 @@ public class GrupoPaisId {
     private int grupo;
     private int pais;
 
+    public GrupoPaisId() {
+    }
+    
     public GrupoPaisId(int grupo, int pais) {
         this.grupo = grupo;
         this.pais = pais;

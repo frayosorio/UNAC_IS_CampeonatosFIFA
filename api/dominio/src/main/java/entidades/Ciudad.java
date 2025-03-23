@@ -22,7 +22,7 @@ public class Ciudad {
     private int id;
 
     @Column(name = "ciudad", nullable = false)
-    private String ciudad;
+    private String nombre;
 
     @ManyToOne
     @JoinColumn(name = "idpais", referencedColumnName = "id", nullable = false)
@@ -31,9 +31,9 @@ public class Ciudad {
     public Ciudad() {
     }
 
-    public Ciudad(int id, String ciudad, Seleccion pais) {
+    public Ciudad(int id, String nombre, Seleccion pais) {
         this.id = id;
-        this.ciudad = ciudad;
+        this.nombre = nombre;
         this.pais = pais;
     }
 
@@ -45,12 +45,12 @@ public class Ciudad {
         this.id = id;
     }
 
-    public String getCiudad() {
-        return ciudad;
+    public String getNombre() {
+        return nombre;
     }
 
-    public void setCiudad(String ciudad) {
-        this.ciudad = ciudad;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
     public Seleccion getPais() {

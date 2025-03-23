@@ -1,10 +1,23 @@
 package campeonatosfifa.api.infraestructura.repositorios;
 
-import campeonatosfifa.api.dominio.entidades.*;
+import java.util.List;
+
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
+import campeonatosfifa.api.dominio.entidades.*;
+
 @Repository
-public interface IGrupoRepositorio extends JpaRepository<Grupo, Integer>{
+public interface IGrupoRepositorio extends JpaRepository<Grupo, Integer> {
+
+    @Query("SELECT g FROM Grupo g WHERE g.nombre LIKE '%' || ?1 || '%'")
+    public List<Grupo> buscar(String nombre);
+
+    @Query("SELECT g FROM Grupo g " +
+            "JOIN Campeonato c ON g.campeonato=c " +
+            "WHERE c.id=?1")
+    public List<Grupo> listarCampeonato(int id);
+    
 
 }
