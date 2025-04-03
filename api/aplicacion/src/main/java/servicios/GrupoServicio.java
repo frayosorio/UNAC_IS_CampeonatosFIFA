@@ -89,9 +89,8 @@ public class GrupoServicio implements IGrupoServicio {
     @Override
     public GrupoPais modificarPais(GrupoPais grupoPais) {
         GrupoPaisId grupoPaisId = new GrupoPaisId(
-            grupoPais.getGrupo().getId(),
-            grupoPais.getPais().getId()
-        );
+                grupoPais.getGrupo().getId(),
+                grupoPais.getPais().getId());
         if (repositorioPaises.findById(grupoPaisId).isEmpty())
             return null;
         return repositorioPaises.save(grupoPais);
@@ -109,7 +108,13 @@ public class GrupoServicio implements IGrupoServicio {
     }
 
     // ***** Tabla de Posiciones *****
+    public List<TablaPosicionesDto> listarTablaPosiciones(int idGrupo) {
+        List<TablaPosicionesDto> tablaPosiciones = em
+                .createNativeQuery("SELECT * FROM fObtenerTablaPosiciones(:idGrupoTabla)", TablaPosicionesDto.class)
+                .setParameter("idGrupoTabla", idGrupo)
+                .getResultList();
 
-
+        return tablaPosiciones;
+    }
 
 }

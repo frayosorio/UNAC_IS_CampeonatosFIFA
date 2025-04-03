@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RestController;
 import campeonatosfifa.api.dominio.entidades.*;
 import campeonatosfifa.api.dominio.DTOs.*;
 import campeonatosfifa.api.core.servicios.*;
+import org.springframework.web.bind.annotation.RequestParam;
+
 
 @RestController
 @RequestMapping("/api/grupos")
@@ -84,5 +86,10 @@ public class GrupoControlador {
     }
 
     // ***** Tabla de Posiciones *****
+
+    @RequestMapping(value="posiciones/{idgrupo}", method=RequestMethod.GET)
+    public List<TablaPosicionesDto> listarTablaPosiciones(int idGrupo) {
+        return servicio.listarTablaPosiciones(idGrupo);
+    }
 
 }

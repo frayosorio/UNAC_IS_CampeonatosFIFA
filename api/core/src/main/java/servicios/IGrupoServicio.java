@@ -1,6 +1,7 @@
 package campeonatosfifa.api.core.servicios;
 
 import java.util.List;
+
 import campeonatosfifa.api.dominio.entidades.*;
 import campeonatosfifa.api.dominio.DTOs.*;
 
@@ -32,8 +33,7 @@ public interface IGrupoServicio {
 
     public boolean eliminarPais(int idGrupo, int idPais);
 
-    //***** Tabla de Posiciones *****
-
-    
+    // ***** Tabla de Posiciones *****
+    public List<TablaPosicionesDto> listarTablaPosiciones(int idGrupo);
 
 }
