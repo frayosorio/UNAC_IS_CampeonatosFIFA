@@ -17,4 +17,6 @@ public interface IEstadioServicio {
     public Estadio modificar(Estadio estadio);
 
     public boolean eliminar(int id);
+
+    public List<Estadio> listarPais(int idPais);
 }

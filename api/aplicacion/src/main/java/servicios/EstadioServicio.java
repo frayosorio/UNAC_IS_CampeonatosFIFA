@@ -55,4 +55,9 @@ public class EstadioServicio implements IEstadioServicio {
         }
     }
 
+    @Override
+    public List<Estadio> listarPais(int idPais) {
+        return repositorio.listarPais(idPais);
+    }
+
 }

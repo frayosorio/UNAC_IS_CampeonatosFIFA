@@ -14,4 +14,9 @@ public interface IEstadioRepositorio extends JpaRepository<Estadio, Integer> {
     @Query("SELECT e FROM Estadio e WHERE e.nombre LIKE '%' || ?1 || '%'")
     public List<Estadio> buscar(String nombre);
 
+    @Query("SELECT e FROM Estadio e "+
+    "JOIN Ciudad c ON e.ciudad.id = c.id " +
+    "WHERE c.pais.id=?1")
+    public List<Estadio> listarPais(int idPais);
+
 }

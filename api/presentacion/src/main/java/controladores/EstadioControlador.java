@@ -51,4 +51,9 @@ public class EstadioControlador {
         return servicio.eliminar(id);
     }
 
+    @RequestMapping(value = "/pais/{idPais}", method = RequestMethod.GET)
+    public List<Estadio> listarPais(@PathVariable int idPais) {
+        return servicio.listarPais(idPais);
+    }
+
 }
