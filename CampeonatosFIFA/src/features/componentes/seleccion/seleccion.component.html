@@ -12,8 +12,13 @@
 </div>
 <div>
     <button mat-raised-button color="primary" (click)="agregar()">Agregar</button>
+    <button mat-raised-button color="accent" (click)="modificar()">Modificar</button>
+    <button mat-raised-button color="warn" (click)="eliminar()">Eliminar</button>
     <ngx-datatable class="dark" [columns]="columnas" [rows]="selecciones"
-    [headerHeight]="50" [footerHeight]="50" [limit]="10" [columnMode]="modoColumna.force">
+    [headerHeight]="50" [footerHeight]="50" [limit]="10" 
+    [columnMode]="modoColumna.force" [selectionType]="tipoSeleccion.single"
+    (activate)="escoger($event)"
+    >
 
     </ngx-datatable>
 </div>
