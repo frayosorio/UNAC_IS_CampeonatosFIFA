@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ReferenciasMaterialModule } from '../../../shared/modulos/referencias-material.module';
 import { ColumnMode, NgxDatatableModule, SelectionType } from '@swimlane/ngx-datatable';
-import { Seleccion } from '../../../shared/entidades/Seleccion';
+import { Seleccion } from '../../../shared/entidades/seleccion';
 import { SeleccionService } from '../../../core/servicios/seleccion.service';
 import { FormsModule } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';

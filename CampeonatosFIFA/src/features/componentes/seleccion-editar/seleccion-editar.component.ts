@@ -1,7 +1,7 @@
 import { Component, Inject } from '@angular/core';
 import { ReferenciasMaterialModule } from '../../../shared/modulos/referencias-material.module';
 import { FormsModule } from '@angular/forms';
-import { Seleccion } from '../../../shared/entidades/Seleccion';
+import { Seleccion } from '../../../shared/entidades/seleccion';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
 export interface DatosEdicionSeleccion {
